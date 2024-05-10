@@ -24,6 +24,10 @@ class userService {
         return axios.delete(USER_API_BASE_URL + '/' + userId);
     }
 
+    authenticateUser(user) {
+        return axios.post(USER_API_BASE_URL + '/login', user);
+    }
+    
 }
 
 export default new userService()
