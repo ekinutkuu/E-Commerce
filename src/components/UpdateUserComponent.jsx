@@ -93,6 +93,11 @@ class UpdateuserComponent extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
+                                            <label> Email Id: </label>
+                                            <input placeholder="Email Address" name="emailId" className="form-control" 
+                                                value={this.state.emailId} onChange={this.changeEmailHandler}/>
+                                        </div>
+                                        <div className = "form-group">
                                             <label> Password: </label>
                                             <input placeholder="Enter Your Password" name="password" className="form-control" 
                                                 value={this.state.password} onChange={this.changePasswordHandler}/>
@@ -106,11 +111,6 @@ class UpdateuserComponent extends Component {
                                             <label> Last Name: </label>
                                             <input placeholder="Last Name" name="lastName" className="form-control" 
                                                 value={this.state.lastName} onChange={this.changeLastNameHandler}/>
-                                        </div>
-                                        <div className = "form-group">
-                                            <label> Email Id: </label>
-                                            <input placeholder="Email Address" name="emailId" className="form-control" 
-                                                value={this.state.emailId} onChange={this.changeEmailHandler}/>
                                         </div>
                                         <div className = "form-group">
                                             <label> Phone Number: </label>

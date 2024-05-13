@@ -19,13 +19,6 @@ class LoginComponent extends Component {
         this.login = this.login.bind(this);
     }
 
-    componentDidMount() {
-        UserService.getUserById(this.state.id).then( (res) => {
-            let user = res.data;
-            //user.emailId == emailId, user.password == password?
-        });
-    }
-
     changeEmailIdHandler = (event) => {
         this.setState({emailId: event.target.value});
     }
