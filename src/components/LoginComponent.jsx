@@ -35,8 +35,15 @@ class LoginComponent extends Component {
             password: this.state.password
         };
 
-        UserService.authenticateUser(user).then( (res) => {
-            this.props.history.push('/users');
+        UserService.authenticateUser(user).then( userType => {
+            if (userType === "admin") {
+                this.props.history.push('/users');
+            } else if (userType === "user") {
+                //console.log("low authorization!");
+                this.props.history.push('/products');
+            } else {
+                console.log("unknown user type");
+            }
         }).catch( (error) => {
             this.setState({errorMessage: 'Invalid email or password'});
         });

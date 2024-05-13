@@ -11,7 +11,6 @@ class UpdateuserComponent extends Component {
             lastName: '',
             emailId: '',
             phoneNumber: '',
-            phoneNumber: '',
             userType: ''
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);

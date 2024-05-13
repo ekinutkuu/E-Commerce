@@ -25,7 +25,8 @@ class userService {
     }
 
     authenticateUser(user) {
-        return axios.post(USER_API_BASE_URL + '/login', user);
+        return axios.post(USER_API_BASE_URL + '/login', user)
+            .then(response => response.data); //kullanıcının user type'ını geri döndürüyor
     }
     
 }

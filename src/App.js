@@ -11,6 +11,7 @@ import ViewuserComponent from './components/ViewUserComponent';
 import CreateProductComponent from './components/CreateProductComponent';
 import LoginComponent from './components/LoginComponent';
 import RegisterComponent from './components/RegisterComponent';
+import ListProducts from './components/ListProducts';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                           <Route path = "/view-user/:id" component = {ViewuserComponent}></Route>
                           {/* <Route path = "/update-user/:id" component = {UpdateuserComponent}></Route> */}
                           <Route path = "/add-product/:id" component = {CreateProductComponent}></Route>
+                          <Route path="/products" component = {ListProducts}></Route>
                     </Switch>
                 </div>
               <FooterComponent />
