@@ -69,14 +69,14 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    // authenticate user
+    // authenticate user (for login)
     @PostMapping("users/login")
-    public ResponseEntity<User> authenticateUser(@RequestBody User loginUser) {
+    public ResponseEntity<String> authenticateUser(@RequestBody User loginUser) {
         User user = userRepository.findByEmailId(loginUser.getEmailId());
         if (user == null || !user.getPassword().equals(loginUser.getPassword())) {
             throw new ResourceNotFoundException("Invalid email or password");
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(user.getUserType());
     }
 
 }
