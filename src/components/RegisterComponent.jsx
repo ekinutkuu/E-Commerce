@@ -10,8 +10,12 @@ class RegisterComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
+            userType: 'user',
             emailId: '',
             password: '',
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
         }
 
         this.changeEmailIdHandler = this.changeEmailIdHandler.bind(this);
@@ -26,13 +30,29 @@ class RegisterComponent extends Component {
     changePasswordHandler = (event) => {
         this.setState({password: event.target.value});
     }
+    
+    changeFirstNameHandler= (event) => {
+        this.setState({firstName: event.target.value});
+    }
+
+    changeLastNameHandler= (event) => {
+        this.setState({lastName: event.target.value});
+    }
+
+    changePhoneHandler = (event) => {
+        this.setState({phoneNumber: event.target.value});
+    }
 
     register(e) {
         e.preventDefault();
 
         let user = {
+            userType: this.state.userType,
             emailId: this.state.emailId,
-            password: this.state.password
+            password: this.state.password,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phoneNumber: this.state.phoneNumber,
         };
         console.log('user => ' + JSON.stringify(user));
 
@@ -61,6 +81,21 @@ class RegisterComponent extends Component {
                                             <label htmlFor="password">Password</label>
                                             <input type="password" id="password" className="form-control"
                                                 value={this.state.password} onChange={this.changePasswordHandler} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="firstName">First Name</label>
+                                            <input type="text" id="firstNumber" className="form-control"
+                                                value={this.state.firstName} onChange={this.changeFirstNameHandler} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="lastName">Last Name</label>
+                                            <input type="text" id="lastNumber" className="form-control"
+                                                value={this.state.lastName} onChange={this.changeLastNameHandler} />
+                                        </div>
+                                        <div className = "form-group">
+                                            <label htmlFor="phoneNumber">Phone Number</label>
+                                            <input type="number" pattern="[0-9]*" id="phoneNumber" className="form-control" 
+                                                value={this.state.phoneNumber} onChange={this.changePhoneHandler}/>
                                         </div>
                                         <div className='d-flex justify-content-between align-items-center'>
                                             <button type="submit" className="btn btn-primary" style={{ height: 'auto' }} onClick={this.register}>Register</button>
