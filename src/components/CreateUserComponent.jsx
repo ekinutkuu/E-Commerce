@@ -14,13 +14,13 @@ class CreateUserComponent extends Component {
             emailId: '',
             phoneNumber: '',
             password: '',
-            userType: 'user'
+            role: 'USER'
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.changePhoneHandler = this.changePhoneHandler.bind(this);
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
-        this.changeUserTypeHandler = this.changeUserTypeHandler.bind(this);
+        this.changeRoleHandler = this.changeRoleHandler.bind(this);
         this.saveOrUpdateUser = this.saveOrUpdateUser.bind(this);
     }
 
@@ -39,7 +39,7 @@ class CreateUserComponent extends Component {
                     emailId : user.emailId,
                     phoneNumber: user.phoneNumber,
                     password: user.password,
-                    userType: user.userType
+                    role: user.role
                 });
             });
         }        
@@ -52,7 +52,7 @@ class CreateUserComponent extends Component {
             emailId: this.state.emailId,
             phoneNumber: this.state.phoneNumber,
             password: this.state.password,
-            userType: this.state.userType
+            role: this.state.role.toUpperCase()
         };
         console.log('user => ' + JSON.stringify(user));
 
@@ -88,8 +88,8 @@ class CreateUserComponent extends Component {
         this.setState({password: event.target.value});
     }
 
-    changeUserTypeHandler = (event) => {
-        this.setState({userType: event.target.value});
+    changeRoleHandler = (event) => {
+        this.setState({role: event.target.value});
     }
 
 
@@ -119,7 +119,7 @@ class CreateUserComponent extends Component {
                                     <form>
                                         <div className = "form-group">
                                             <label> User Type: </label>
-                                                <select name="userType" className="form-control" value={this.state.userType} onChange={this.changeUserTypeHandler}>
+                                                <select name="role" className="form-control" value={this.state.role} onChange={this.changeRoleHandler}>
                                                         {/* <option value="">Select User Type</option> */}
                                                         <option value="user">User</option>
                                                         <option value="admin">Admin</option>

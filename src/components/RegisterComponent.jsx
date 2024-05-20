@@ -10,7 +10,7 @@ class RegisterComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            userType: 'user',
+            role: 'USER',
             emailId: '',
             password: '',
             firstName: '',
@@ -47,7 +47,7 @@ class RegisterComponent extends Component {
         e.preventDefault();
 
         let user = {
-            userType: this.state.userType,
+            role: this.state.role.toUpperCase(),
             emailId: this.state.emailId,
             password: this.state.password,
             firstName: this.state.firstName,

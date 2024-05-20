@@ -11,13 +11,13 @@ class UpdateuserComponent extends Component {
             lastName: '',
             emailId: '',
             phoneNumber: '',
-            userType: ''
+            role: ''
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.changePhoneHandler = this.changePhoneHandler.bind(this);
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
-        this.changeUserTypeHandler = this.changeUserTypeHandler.bind(this);
+        this.changeRoleHandler = this.changeRoleHandler.bind(this);
         this.updateuser = this.updateuser.bind(this);
     }
 
@@ -30,7 +30,7 @@ class UpdateuserComponent extends Component {
                 emailId : user.emailId,
                 phoneNumber: user.phoneNumber,
                 password: user.password,
-                userType: user.userType
+                role: user.role
             });
         });
     }
@@ -43,7 +43,7 @@ class UpdateuserComponent extends Component {
             emailId: this.state.emailId,
             phoneNumber: this.state.phoneNumber,
             password: this.state.password,
-            userType: this.state.userType
+            role: this.state.role
         };
         console.log('user => ' + JSON.stringify(user));
         console.log('id => ' + JSON.stringify(this.state.id));
@@ -65,15 +65,15 @@ class UpdateuserComponent extends Component {
     }
 
     changePhoneHandler = (event) => {
-        this.setState({userType: event.target.value});
+        this.setState({role: event.target.value});
     }
 
     changePasswordHandler = (event) => {
         this.setState({password: event.target.value});
     }
 
-    changeUserTypeHandler = (event) => {
-        this.setState({userType: event.target.value});
+    changeRoleHandler = (event) => {
+        this.setState({role: event.target.value});
     }
 
     cancel(){

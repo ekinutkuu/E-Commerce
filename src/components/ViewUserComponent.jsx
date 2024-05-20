@@ -26,8 +26,8 @@ class ViewUserComponent extends Component {
                     <h3 className = "text-center"> View User Details</h3>
                     <div className = "card-body">
                         <div className = "row">
-                            <label> User Type: </label>
-                            <div> { this.state.user.userType }</div>
+                            <label> User Role: </label>
+                            <div> { this.state.user.role }</div>
                         </div>
                         <div className = "row">
                             <label> user First Name: </label>

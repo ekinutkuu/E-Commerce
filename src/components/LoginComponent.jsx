@@ -35,10 +35,10 @@ class LoginComponent extends Component {
             password: this.state.password
         };
 
-        UserService.authenticateUser(user).then( userType => {
-            if (userType === "admin") {
+        UserService.authenticateUser(user).then( role => {
+            if (role === "ADMIN") {
                 this.props.history.push('/users');
-            } else if (userType === "user") {
+            } else if (role === "USER") {
                 //console.log("low authorization!");
                 this.props.history.push('/products');
             } else {
