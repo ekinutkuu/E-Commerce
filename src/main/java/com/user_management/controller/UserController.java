@@ -29,6 +29,7 @@ public class UserController {
     // create user
     @PostMapping("/users")
     public User createUser(@RequestBody User user){
+
         return userRepository.save(user);
     }
 
@@ -51,7 +52,7 @@ public class UserController {
         user.setEmailId(userDetails.getEmailId());
         user.setPhoneNumber(userDetails.getPhoneNumber());
         user.setPassword(userDetails.getPassword());
-        user.setUserType(userDetails.getUserType());
+        user.setRole(userDetails.getRole());
 
         User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
@@ -76,7 +77,7 @@ public class UserController {
         if (user == null || !user.getPassword().equals(loginUser.getPassword())) {
             throw new ResourceNotFoundException("Invalid email or password");
         }
-        return ResponseEntity.ok(user.getUserType());
+        return ResponseEntity.ok(user.getRole().name());
     }
 
 }
