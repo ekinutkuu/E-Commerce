@@ -1,6 +1,7 @@
 package com.user_management.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -8,7 +9,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long userId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
@@ -29,6 +30,9 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Cart> carts;
+
     public User() {}
 
     public User(String firstName, String lastName, String emailId, String phoneNumber, String password, Role role) {
@@ -41,11 +45,11 @@ public class User {
     }
 
     public long getId() {
-        return id;
+        return userId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.userId = userId;
     }
 
     public String getFirstName() {

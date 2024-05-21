@@ -27,8 +27,15 @@ public class SecurityConfig {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/**").permitAll()
-                                .requestMatchers("/api/v1/**").permitAll()
-                                .anyRequest().authenticated()
+                                //.requestMatchers("/api/v1/**").permitAll()
+                                //.requestMatchers("/api/v1/users/**").permitAll()
+                                //.requestMatchers("/api/v1/products/**").permitAll()
+                                //.requestMatchers("/api/v1/users/login/**").permitAll()
+
+                                //.requestMatchers("/api/v1/users/**").hasRole("ADMIN")
+                                //.requestMatchers("/api/v1/login/**").permitAll()
+                                //.requestMatchers("/api/v1/products/**").permitAll()
+                                //.anyRequest().authenticated()
                 )
                 .httpBasic();
         return http.build();
