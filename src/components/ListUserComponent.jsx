@@ -31,7 +31,8 @@ class ListUserComponent extends Component {
     componentDidMount(){
         userService.getUsers().then((res) => {
             this.setState({ users: res.data});
-        });
+            console.log(res.data);
+        })
     }
 
     addUser(){

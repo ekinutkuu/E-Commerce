@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const API_BASE_URL = "http://localhost:8080/api/v1";
 const USER_API_BASE_URL = "http://localhost:8080/api/v1/users";
 
 class userService {
@@ -9,7 +10,7 @@ class userService {
     }
 
     createUser(user){
-        return axios.post(USER_API_BASE_URL, user);
+        return axios.post(API_BASE_URL + "/register", user);
     }
 
     getUserById(userId){
@@ -25,8 +26,15 @@ class userService {
     }
 
     authenticateUser(user) {
-        return axios.post(USER_API_BASE_URL + '/login', user)
-            .then(response => response.data); //kullanıcının user type'ını geri döndürüyor
+        return axios.post(API_BASE_URL + "/login", user)
+            .then(response => {
+                console.log(response.data);
+                return response.data;
+            })
+            .catch(error => {
+                console.error(error.response ? error.response.data : error.message);
+                throw error;
+            });
     }
     
 }

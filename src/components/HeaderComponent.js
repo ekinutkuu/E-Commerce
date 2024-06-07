@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import LogoutButton from './LogoutButton';
 
 class HeaderComponent extends Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class HeaderComponent extends Component {
             <div>
                 <header>
                     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div><a href="/" className="navbar-brand">User Management App</a></div>
+                        <div><a href="/" className="navbar-brand">User Management App</a></div>
+                        <LogoutButton onLogout={this.props.onLogout} />
                     </nav>
                 </header>
             </div>
