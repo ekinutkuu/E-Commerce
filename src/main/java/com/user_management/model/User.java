@@ -15,7 +15,7 @@ public class User {
     @Column(name = "role")
     private Role role;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "first_name")
@@ -24,7 +24,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email_id")
+    @Column(name = "email_id", unique = true, nullable = false)
     private String emailId;
 
     @Column(name = "phone_number")

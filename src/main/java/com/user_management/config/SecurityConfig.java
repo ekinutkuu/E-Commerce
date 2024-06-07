@@ -26,16 +26,20 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/**").permitAll()
+                                //.requestMatchers("/**").permitAll()
+                                .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
+                                .requestMatchers("/api/v1/products/**").permitAll()
+                                .requestMatchers("/api/v1/login").permitAll()
+
                                 //.requestMatchers("/api/v1/**").permitAll()
-                                //.requestMatchers("/api/v1/users/**").permitAll()
+                                //.requestMatchers("/api/v1/users/**").hasRole("USER")
                                 //.requestMatchers("/api/v1/products/**").permitAll()
                                 //.requestMatchers("/api/v1/users/login/**").permitAll()
 
                                 //.requestMatchers("/api/v1/users/**").hasRole("ADMIN")
                                 //.requestMatchers("/api/v1/login/**").permitAll()
-                                //.requestMatchers("/api/v1/products/**").permitAll()
-                                //.anyRequest().authenticated()
+                                //.requestMatchers("/api/v1/products/**").hasRole("ADMIN")
+                                .anyRequest().authenticated()
                 )
                 .httpBasic();
         return http.build();
