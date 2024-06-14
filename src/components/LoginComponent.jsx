@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import UserService from '../services/UserService';
+import jwtService from '../services/JwtService'
 
 
 class LoginComponent extends Component {
@@ -36,13 +37,11 @@ class LoginComponent extends Component {
         };
 
         UserService.authenticateUser(user).then( role => {
-            if (role === "ADMIN") {
+            if(jwtService.getRoles().includes("ADMIN")) {
                 this.props.history.push('/users');
-            } else if (role === "USER") {
+            } else {
                 //console.log("low authorization!");
                 this.props.history.push('/products');
-            } else {
-                console.log("unknown user type");
             }
         }).catch( (error) => {
             this.setState({errorMessage: 'Invalid email or password'});

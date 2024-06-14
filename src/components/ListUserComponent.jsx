@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import userService from '../services/UserService'
+import jwtService from '../services/JwtService'
 
 class ListUserComponent extends Component {
 
@@ -7,12 +8,14 @@ class ListUserComponent extends Component {
         super(props)
 
         this.state = {
-            users: []
+            users: [],
+            isAdmin: false,
+            loading: true
         }
+
         this.addUser = this.addUser.bind(this);
         this.edituser = this.edituser.bind(this);
         this.deleteuser = this.deleteuser.bind(this);
-
         this.addProduct = this.addProduct.bind(this);
     }
 
@@ -29,10 +32,15 @@ class ListUserComponent extends Component {
     }
 
     componentDidMount(){
-        userService.getUsers().then((res) => {
-            this.setState({ users: res.data});
-            console.log(res.data);
-        })
+        const isAdmin = jwtService.getRoles().includes("ADMIN");
+        this.setState({ isAdmin, loading: false });
+
+        if (isAdmin) {
+            userService.getUsers().then((res) => {
+                this.setState({ users: res.data});
+                console.log(res.data);
+            })
+        }
     }
 
     addUser(){
@@ -45,6 +53,19 @@ class ListUserComponent extends Component {
 
     render() {
         document.title = "User Management";
+
+        if (this.state.loading) {
+            return(
+                <h1>Loading...</h1>
+            );
+        }
+
+        if (!this.state.isAdmin) {
+            return(
+                <h1>This is admin panel and you don't have permission</h1>
+            );
+        }
+
         return (
             <div>
                 <h2 className="text-center" style={{margin: "20px 0"}}>Users List</h2>
