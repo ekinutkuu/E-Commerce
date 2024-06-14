@@ -3,6 +3,9 @@ package com.user_management.controller;
 import com.user_management.exception.ResourceNotFoundException;
 import com.user_management.repository.UserRepository;
 import com.user_management.model.User;
+import com.user_management.services.AuthenticationRequest;
+import com.user_management.services.AuthenticationResponse;
+import com.user_management.services.AuthenticationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AuthenticationService service;
 
     // get all users
     @GetMapping("/users")
@@ -44,14 +50,14 @@ public class UserController {
 
     // authenticate user (for login)
     @PostMapping("/login")
-    public ResponseEntity<String> authenticateUser(@RequestBody User loginUser) {
+    public ResponseEntity<AuthenticationResponse> authenticateUser(@RequestBody AuthenticationRequest loginUser) {
         User user = userRepository.findByEmailId(loginUser.getEmailId());
         if (user == null || !user.getPassword().equals(loginUser.getPassword())) {
-            throw new ResourceNotFoundException("Invalid email or password");
+            throw new ResourceNotFoundException("Invalid email or password!");
         }
-        return ResponseEntity.ok(user.getRole().name());
+        return ResponseEntity.ok(service.authenticate(loginUser));
     }
-
+    
     // logout
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
