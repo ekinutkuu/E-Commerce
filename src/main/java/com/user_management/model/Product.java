@@ -20,9 +20,6 @@ public class Product {
     @Column(name = "product_image")
     private String productImage;
 
-    @OneToMany(mappedBy = "productId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Cart> carts;
-
     public Product() {}
 
     public Product(String productName, String productPrice, String productImage) {

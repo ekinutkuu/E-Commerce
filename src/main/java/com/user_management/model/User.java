@@ -35,9 +35,6 @@ public class User implements UserDetails {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Cart> carts;
-
     public User() {}
 
     public User(String firstName, String lastName, String emailId, String phoneNumber, String password, Role role) {

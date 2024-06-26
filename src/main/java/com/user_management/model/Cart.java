@@ -1,74 +1,51 @@
 package com.user_management.model;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "cartId")
 @Entity
 @Table(name = "carts")
 public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cartId;
+    private long cartId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product productId;
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
 
-    @Column(name = "quantity")
-    private int quantity;
-
-    @Column(name = "total_price")
-    private float total_price;
-
-    public Cart() {}
-
-    public Cart(User userId, Product productId, int quantity, float total_price) {
-        this.userId = userId;
-        this.productId = productId;
-        this.quantity = quantity;
-        this.total_price = total_price;
+    public Cart() {
     }
 
-    public Long getCartId() {
+    public long getCartId() {
         return cartId;
     }
 
-    public void setCartId(Long cartId) {
+    public void setCartId(long cartId) {
         this.cartId = cartId;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Product getProductId() {
-        return productId;
+    public List<CartItem> getCartItems() {
+        return cartItems;
     }
 
-    public void setProductId(Product productId) {
-        this.productId = productId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public float getTotal_price() {
-        return total_price;
-    }
-
-    public void setTotal_price(float total_price) {
-        this.total_price = total_price;
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 }
