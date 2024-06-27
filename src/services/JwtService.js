@@ -22,6 +22,14 @@ class JwtService {
         }
     }
 
+    getUserId() {
+        if (this.decodeToken()) {
+            return this.decodeToken().userId;
+        } else {
+            console.warn("No valid token found.");
+        }
+    }
+
     getUsername() {
         if (this.decodeToken()) {
             return this.decodeToken().username;

@@ -12,6 +12,7 @@ import CreateProductComponent from './components/CreateProductComponent';
 import LoginComponent from './components/LoginComponent';
 import RegisterComponent from './components/RegisterComponent';
 import ListProducts from './components/ListProducts';
+import CartPage from './components/CartPage';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                           {/* <Route path = "/update-user/:id" component = {UpdateuserComponent}></Route> */}
                           <Route path = "/add-product/:id" component = {CreateProductComponent}></Route>
                           <Route path="/products" component = {ListProducts}></Route>
+                          <Route path = "/cart" component={CartPage}></Route>
                     </Switch>
                 </div>
               <FooterComponent />

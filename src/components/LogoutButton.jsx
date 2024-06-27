@@ -18,7 +18,7 @@ const LogoutButton = ({ onLogout }) => {
 
     return (
         <button onClick={handleLogout} className="btn btn-outline-light" style={{ marginLeft: '10px' }}>
-            Çıkış Yap
+            Log out
         </button>
     );
 };
