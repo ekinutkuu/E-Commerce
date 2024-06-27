@@ -5,7 +5,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.security.core.userdetails.User;
+import com.user_management.model.User;
+//import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +35,12 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+        User user = (User) userDetails;
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
                 //.setSubject(userDetails.getUsername())
+                .claim("userId", user.getId())
                 .claim("username", userDetails.getUsername())
                 .claim("password", userDetails.getPassword())
                 .claim("roles", userDetails.getAuthorities())
