@@ -16,11 +16,13 @@ class HeaderComponent extends Component {
         return (
             <div>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                    <nav className="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
                         <div><a href="/" className="navbar-brand">User Management App</a></div>
-                        <ProductButton  />
-                        <CartButton />
-                        <LogoutButton onLogout={this.props.onLogout} />
+                        <div>
+                            <ProductButton  />
+                            <CartButton />
+                            <LogoutButton onLogout={this.props.onLogout} />
+                        </div>
                     </nav>
                 </header>
             </div>
