@@ -17,15 +17,19 @@ public class Product {
     @Column(name = "product_price")
     private String productPrice;
 
-    @Column(name = "product_image")
-    private String productImage;
+    @Column(name = "product_seller")
+    private String productSeller;
+
+    @Column(name = "product_description")
+    private String productDescription;
 
     public Product() {}
 
-    public Product(String productName, String productPrice, String productImage) {
+    public Product(String productName, String productPrice, String productSeller, String productDescription) {
         this.productName = productName;
         this.productPrice = productPrice;
-        this.productImage = productImage;
+        this.productSeller = productSeller;
+        this.productDescription = productDescription;
     }
 
     public Long getProductId() {
@@ -52,12 +56,19 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    public String getProductImage() {
-        return productImage;
+    public String getProductSeller() {
+        return productSeller;
     }
 
-    public void setProductImage(String productImage) {
-        this.productImage = productImage;
+    public void setProductSeller(String productSeller) {
+        this.productSeller = productSeller;
     }
 
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
 }
