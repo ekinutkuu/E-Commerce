@@ -4,6 +4,7 @@ import CartService from '../services/CartService';
 import JwtService from '../services/JwtService';
 import product_card from "../data/product-data";
 import '../css/ListProduct.css';
+import ProductCard from './ProductCard';
 
 class ListProducts extends Component {
 
@@ -43,36 +44,24 @@ class ListProducts extends Component {
     render() {
         document.title = "Products";
         return (
-                <div className="wrapper">
-                    <div className="main_content">
-                        <table className="product-table">
-                            <thead>
-                                <tr>
-                                    {/* <th> Product ID </th> */}
-                                    <th> Product Name </th>
-                                    <th> Product Price </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.state.products.map(
-                                        product => 
-                                        <tr>
-                                            {/* <td> {product.productId} </td> */}
-                                            <td> {product.productName}</td>
-                                            <td> {product.productPrice}</td>
-                                            <td><button className="add-to-cart" onClick={() => this.addToCart(product)}>Add to Cart</button></td>
-                                        </tr>
-                                    )
-                                }
-                            </tbody>
-                        </table>
+            <div className="wrapper">
+                <div className="main_content">
+                    <div className="container mt-5">
+                        <div className="row">
+                            {this.state.products.map(product => (
+                                <ProductCard
+                                    key={product.productId}
+                                    product={product}
+                                    addToCart={this.addToCart}
+                                    className="col-lg-4 col-md-6 mb-4"
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
+            </div>
         );
     }
 }
 
 export default ListProducts;
-

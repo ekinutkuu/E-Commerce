@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const ProductButton = ({ onLogout }) => {
+const ProductButton = () => {
 
     const history = useHistory();
 

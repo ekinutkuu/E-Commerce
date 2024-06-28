@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LogoutButton from './LogoutButton';
 import ProductButton from './ProductButton';
 import CartButton from './CartButton';
+import UsersButton from './UsersButton';
 
 class HeaderComponent extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class HeaderComponent extends Component {
                     <nav className="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
                         <div><a href="/" className="navbar-brand">User Management App</a></div>
                         <div>
+                            <UsersButton />
                             <ProductButton  />
                             <CartButton />
                             <LogoutButton onLogout={this.props.onLogout} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const CartButton = ({ onLogout }) => {
+const CartButton = () => {
 
     const history = useHistory();
 
