@@ -13,6 +13,7 @@ import LoginComponent from './components/LoginComponent';
 import RegisterComponent from './components/RegisterComponent';
 import ListProducts from './components/ListProducts';
 import CartPage from './components/CartPage';
+import ProductPage from './components/ProductPage';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                           <Route path = "/add-product/:id" component = {CreateProductComponent}></Route>
                           <Route path="/products" component = {ListProducts}></Route>
                           <Route path = "/cart" component={CartPage}></Route>
+                          <Route path="/product/:productId" component={ProductPage}></Route>
                     </Switch>
                 </div>
               <FooterComponent />

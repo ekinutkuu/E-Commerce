@@ -8,6 +8,10 @@ class ProductService {
         return axios.get(PRODUCTS_API_BASE_URL);
     }
 
+    getProductById(productId) {
+        return axios.get(PRODUCTS_API_BASE_URL + "/" + productId);
+    }
+
 }
 
 export default new ProductService()
