@@ -1,0 +1,35 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-inner {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    background-color: rgb(252, 187, 66);
+    border-radius: 10px;
+    border: 1px solid rgb(255, 235, 122);
+}
+
+.popup-inner button {
+    background-color: rgb(255, 222, 131);
+    border: none;
+    border-radius: 15px;
+    width: 70px;
+    height: 35px;
+    transition: 0.1s ease-in;
+}
+
+.popup-inner button:hover {
+    background-color: rgb(255, 231, 165);
+}

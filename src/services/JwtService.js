@@ -58,6 +58,10 @@ class JwtService {
             return [];
         }
     }
+
+    isLogin() {
+        return this.token !== null;
+    }
 }
 
 export default new JwtService();

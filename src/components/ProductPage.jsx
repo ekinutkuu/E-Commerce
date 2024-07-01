@@ -5,13 +5,15 @@ import JwtService from "../services/JwtService";
 import { withRouter } from "react-router-dom";
 import "../css/ProductPage.css";
 import productImage from '../img/question_mark.png';
+import Popup from "./Popup";
 
 class ProductPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             product: null,
-            userId: JwtService.getUserId()
+            userId: JwtService.getUserId(),
+            showPopup: false
         };
     }
 
@@ -27,6 +29,12 @@ class ProductPage extends Component {
     }
 
     addToCart = (product) => {
+        if (!JwtService.isLogin()) {
+            console.log("User is not logged in!");
+            this.setState({ showPopup: true });
+            return;
+        }
+
         const cartItem = {
             product: {
                 productId: product.productId
@@ -44,7 +52,7 @@ class ProductPage extends Component {
     };
 
     render() {
-        const { product } = this.state;
+    const { product, showPopup } = this.state;
 
     if (!product) {
         return <div>Loading...</div>;
@@ -192,7 +200,7 @@ class ProductPage extends Component {
                     <use fill="#FF7E1B" fillRule="nonzero" xlinkHref="#a" />
                     </svg>
                 </button>
-                <span class="count">0</span>
+                <span class="count">1</span>
                 <button class="plus">
                     <svg
                     width="12"
@@ -227,6 +235,18 @@ class ProductPage extends Component {
                 </button>
             </div>
             </div>
+
+            {/* Popup */}
+            {showPopup && (
+                <Popup trigger={true}>
+                    <div>
+                        <h1>Please Log In!</h1>
+                        <p>You must be logged in to add the product to the cart</p>
+                        <button onClick={() => this.setState({ showPopup: false })}>Close</button>
+                    </div>
+                </Popup>
+            )}
+
         </section>
         </div>
         );

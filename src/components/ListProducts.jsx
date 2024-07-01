@@ -5,6 +5,8 @@ import JwtService from '../services/JwtService';
 import product_card from "../data/product-data";
 import '../css/ListProduct.css';
 import ProductCard from './ProductCard';
+import Popup from "./Popup";
+
 
 class ListProducts extends Component {
 
@@ -12,7 +14,8 @@ class ListProducts extends Component {
         super(props);
         this.state = {
             products: [],
-            userId: JwtService.getUserId()
+            userId: JwtService.getUserId(),
+            showPopup: false
         };
     }
 
@@ -25,6 +28,12 @@ class ListProducts extends Component {
     }
 
     addToCart = (product) => {
+        if (!JwtService.isLogin()) {
+            console.log("User is not logged in!");
+            this.setState({ showPopup: true });
+            return;
+        }
+
         const cartItem = {
             product: {
                 productId: product.productId
@@ -43,6 +52,9 @@ class ListProducts extends Component {
 
     render() {
         document.title = "Products";
+
+        const { showPopup } = this.state;
+
         return (
             <div className="wrapper">
                 <div className="main_content">
@@ -58,6 +70,18 @@ class ListProducts extends Component {
                             ))}
                         </div>
                     </div>
+                    
+                    {/* Popup */}
+                    {showPopup && (
+                        <Popup trigger={true}>
+                            <div>
+                                <h1>Please Log In!</h1>
+                                <p>You must be logged in to add the product to the cart</p>
+                                <button onClick={() => this.setState({ showPopup: false })}>Close</button>
+                            </div>
+                        </Popup>
+                    )}
+
                 </div>
             </div>
         );
