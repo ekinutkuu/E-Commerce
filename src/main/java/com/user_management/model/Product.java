@@ -23,6 +23,10 @@ public class Product {
     @Column(name = "product_description")
     private String productDescription;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private ProductCategory category;
+
     public Product() {}
 
     public Product(String productName, String productPrice, String productSeller, String productDescription) {
@@ -70,5 +74,13 @@ public class Product {
 
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
     }
 }
