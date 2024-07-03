@@ -36,7 +36,7 @@ function App() {
                           <Route path="/product/:productId" component={ProductPage}></Route>
                     </Switch>
                 </div>
-              <FooterComponent />
+              {/* <FooterComponent /> */}
         </Router>
     </div>
     

@@ -5,10 +5,17 @@
   box-sizing: border-box;
 }
 
-.wrapper{
+/* .wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
+} */
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }
 
 .dFlex, nav, nav ul, .main_content, .main_content .card, .main_content .card .card_header, .addToCard, .footer, .footer .social, .footer .social .fa {
@@ -21,6 +28,11 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.main_content {
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .product-table {
@@ -68,4 +80,38 @@
 
 .add-to-cart:hover {
   background-color: #218838;
+}
+
+.product-card:hover {
+  background-color: #efefef;
+}
+
+.form-select {
+  padding: 8px;
+  margin: 30px 0;
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid #ffc107;
+  border-radius: 5px;
+  background-color: #ffc107;
+  font-size: 18px;
+  color: #343a40;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #ffc107;
+  box-shadow: 0 0 20px rgba(255, 199, 46, 0.5);
+}
+
+.form-select option {
+  padding: 10px;
+  background-color: #ffeec9;
+  color: #343a40;
+}
+
+.form-select option:hover {
+  background-color: #ffc107;
+  color: #fff;
 }

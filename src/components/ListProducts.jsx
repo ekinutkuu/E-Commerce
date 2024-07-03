@@ -14,17 +14,43 @@ class ListProducts extends Component {
         super(props);
         this.state = {
             products: [],
+            categories: [],
+            selectedCategory: "",
             userId: JwtService.getUserId(),
             showPopup: false
         };
     }
 
     componentDidMount(){
+        this.fetchProducts();
+        this.fetchCategories();
+        //console.log(this.state.userId);
+    }
+
+    fetchProducts = () => {
         ProductService.getProducts().then((res) => {
             this.setState({ products: res.data});
             console.log(res.data);
         });
-        console.log(this.state.userId);
+    }
+
+    fetchCategories = () => {
+        ProductService.getCategories().then((res) => {
+            this.setState({ categories: res.data });
+            console.log(res.data);
+        });
+    }
+
+    handleCategoryChange = (e) => {
+        const categoryId = e.target.value;
+        if (categoryId) {
+            ProductService.getProductByCategory(categoryId).then((res) => {
+                this.setState({ products: res.data, selectedCategory: categoryId });
+            });
+        } else {
+            this.fetchProducts();
+            this.setState({ selectedCategory: '' });
+        }
     }
 
     addToCart = (product) => {
@@ -53,13 +79,23 @@ class ListProducts extends Component {
     render() {
         document.title = "Products";
 
-        const { showPopup } = this.state;
+        const { showPopup, categories, selectedCategory } = this.state;
 
         return (
             <div className="wrapper">
                 <div className="main_content">
-                    <div className="container mt-5">
-                        <div className="row">
+                    <div className="row">
+                        <div className="col-12">
+                            <select value={selectedCategory} onChange={this.handleCategoryChange} className="form-select">
+                                <option value="">All Categories</option>
+                                {categories.map(category => (
+                                    <option key={category.id} value={category.id}>{category.categoryName}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+                    <div className="container">
+                        <div className="row justify-content-center">
                             {this.state.products.map(product => (
                                 <ProductCard
                                     key={product.productId}
