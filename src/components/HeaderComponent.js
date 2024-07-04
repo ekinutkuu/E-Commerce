@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LogoutButton from './LogoutButton';
 import ProductButton from './ProductButton';
 import CartButton from './CartButton';
-import UsersButton from './UsersButton';
+import AdminButton from './AdminButton';
 
 class HeaderComponent extends Component {
     constructor(props) {
@@ -18,9 +18,9 @@ class HeaderComponent extends Component {
             <div>
                 <header>
                     <nav className="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
-                        <div><a href="/" className="navbar-brand">User Management App</a></div>
+                        <div><a href="/" className="navbar-brand">E-Commerce App</a></div>
                         <div>
-                            <UsersButton />
+                            <AdminButton />
                             <ProductButton  />
                             <CartButton />
                             <LogoutButton onLogout={this.props.onLogout} />

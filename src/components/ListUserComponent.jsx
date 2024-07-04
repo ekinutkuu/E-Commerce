@@ -16,7 +16,6 @@ class ListUserComponent extends Component {
         this.addUser = this.addUser.bind(this);
         this.edituser = this.edituser.bind(this);
         this.deleteuser = this.deleteuser.bind(this);
-        this.addProduct = this.addProduct.bind(this);
     }
 
     deleteuser(id){
@@ -47,10 +46,6 @@ class ListUserComponent extends Component {
         this.props.history.push('/add-user/_add');
     }
 
-    addProduct(){
-        this.props.history.push('/add-product/_add');
-    }
-
     render() {
         document.title = "User Management";
 
@@ -71,7 +66,6 @@ class ListUserComponent extends Component {
                 <h2 className="text-center" style={{margin: "20px 0"}}>Users List</h2>
                 <div className = "row">
                     <button className="btn btn-primary" onClick={this.addUser}> Add User</button>
-                    <button className="btn btn-primary" onClick={this.addProduct} style={{marginLeft: "20px"}}>Add Product</button>
                 </div>
                 <br></br>
                 <div className = "row">
