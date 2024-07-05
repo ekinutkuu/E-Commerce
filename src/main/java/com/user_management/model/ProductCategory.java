@@ -25,7 +25,7 @@ public class ProductCategory {
         return categoryName;
     }
 
-    public void setCategoryName(String name) {
+    public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
 }
