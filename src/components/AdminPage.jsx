@@ -35,6 +35,10 @@ class AdminPage extends Component {
         this.props.history.push('/admin/products');
     }
 
+    handleCategoriesPage = () => {
+        this.props.history.push("/admin/categories");
+    }
+
     render() {
         document.title = "Admin Panel";
 
@@ -54,6 +58,7 @@ class AdminPage extends Component {
                     <div className="admin-panel-buttons">
                         <button onClick={this.handleUsersPage} className='admin-panel-button'>Manage Users</button>
                         <button onClick={this.handleProductsPage} className='admin-panel-button'>Manage Products</button>
+                        <button onClick={this.handleCategoriesPage} className='admin-panel-button'>Manage Categories</button>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,8 @@ import ProductPage from './components/ProductPage';
 import AdminPage from './components/AdminPage';
 import ProductsAdmin from './components/ProductsAdmin';
 import ViewProductAdminComponent from './components/ViewProductAdminComponent';
+import CategoriesAdmin from './components/CategoriesAdmin';
+import CreateCategories from './components/CreateCategories';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
                           <Route path = "/admin/products" component = {ProductsAdmin}></Route>
                           <Route path = "/add-product/:id" component = {CreateProductComponent}></Route>
                           <Route path = "/view-product/:id" component = {ViewProductAdminComponent}></Route>
+                          <Route path = "/admin/categories" component = {CategoriesAdmin}></Route>
+                          <Route path = "/add-category/:id" component = {CreateCategories}></Route>
                           <Route path="/products" component = {ListProducts}></Route>
                           <Route path = "/cart" component={CartPage}></Route>
                           <Route path="/product/:productId" component={ProductPage}></Route>
