@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import userService from '../services/UserService';
+import Popup from "./Popup";
+
 
 class CreateUserComponent extends Component {
 
@@ -14,8 +16,10 @@ class CreateUserComponent extends Component {
             emailId: '',
             phoneNumber: '',
             password: '',
-            role: 'USER'
+            role: 'USER',
+            showPopup: false
         }
+        
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.changePhoneHandler = this.changePhoneHandler.bind(this);
@@ -46,6 +50,15 @@ class CreateUserComponent extends Component {
     }
     saveOrUpdateUser = (e) => {
         e.preventDefault();
+
+        const { emailId, password, role, firstName, lastName, phoneNumber } = this.state
+
+        if (!emailId || !password || !role || !firstName || !lastName || !phoneNumber) {
+            console.log('Missing Values!');
+            this.setState({ showPopup: true });
+            return;
+        }
+
         let user = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -106,6 +119,7 @@ class CreateUserComponent extends Component {
     }
     render() {
         document.title = "Create User";
+        const { showPopup } = this.state;
         return (
             <div>
                 <br></br>
@@ -120,10 +134,9 @@ class CreateUserComponent extends Component {
                                         <div className = "form-group">
                                             <label> User Type: </label>
                                                 <select name="role" className="form-control" value={this.state.role} onChange={this.changeRoleHandler}>
-                                                        {/* <option value="">Select User Type</option> */}
+                                                        {/* <option value="">Select a Role</option> */}
                                                         <option value="user">User</option>
                                                         <option value="admin">Admin</option>
-                                                        <option value="deneme">deneme</option>
                                                 </select>
                                         </div>
                                         <div className = "form-group">
@@ -158,8 +171,19 @@ class CreateUserComponent extends Component {
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
+                {/* Popup */}
+                {showPopup && (
+                    <Popup trigger={true}>
+                        <div>
+                            <h1>Missing Values!</h1>
+                            <p>You cannot leave empty values in the input box</p>
+                            <button onClick={() => this.setState({ showPopup: false })}>Close</button>
+                        </div>
+                    </Popup>
+                )}
+
             </div>
         )
     }

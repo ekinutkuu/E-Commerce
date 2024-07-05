@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import productService from '../services/ProductService';
+import Popup from "./Popup";
 
 class CreateProductComponent extends Component {
 
@@ -17,7 +18,8 @@ class CreateProductComponent extends Component {
                 id: '',
                 categoryName: ''
             },
-            categories: []
+            categories: [],
+            showPopup: false
         }
 
         this.changeProductNameHandler = this.changeProductNameHandler.bind(this);
@@ -54,6 +56,15 @@ class CreateProductComponent extends Component {
 
     saveOrUpdateProduct = (e) => {
         e.preventDefault();
+
+        const { productName, productPrice, seller, description, category } = this.state;
+
+        if (!productName || !productPrice || !seller || !description || !category.id) {
+            console.log('Missing Values!');
+            this.setState({ showPopup: true });
+            return;
+        }
+
         let product = {
             productName: this.state.productName,
             productPrice: this.state.productPrice,
@@ -128,7 +139,7 @@ class CreateProductComponent extends Component {
 
     render() {
         document.title = "Create Product";
-        const {category, categories} = this.state;
+        const { category, categories, showPopup } = this.state;
         return(
             <div>
                 <br></br>
@@ -177,6 +188,18 @@ class CreateProductComponent extends Component {
                         </div>
                     </div>
                 </div>
+
+                {/* Popup */}
+                {showPopup && (
+                    <Popup trigger={true}>
+                        <div>
+                            <h1>Missing Values!</h1>
+                            <p>You cannot leave empty values in the input box</p>
+                            <button onClick={() => this.setState({ showPopup: false })}>Close</button>
+                        </div>
+                    </Popup>
+                )}
+
             </div>
         )
     }
