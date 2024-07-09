@@ -1,4 +1,4 @@
-package com.user_management.config;
+package com.user_management.security.config;
 
 import com.user_management.security.JwtService;
 import jakarta.annotation.Nonnull;
