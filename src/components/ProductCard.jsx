@@ -12,6 +12,7 @@ const ProductCard = ({ product, addToCart }) => {
                 <p className="product-card-text">{product.description}</p>
                 <p className="product-card-price">${product.productPrice}</p>
                 <button className="btn btn-warning" onClick={() => addToCart(product)}>Add to Cart</button>
+                <Link to={`/product/${product.productId}`} className="more-info-text d-flex mt-4">More Info</Link>
             </div>
         </div>
     );

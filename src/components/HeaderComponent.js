@@ -3,6 +3,7 @@ import LogoutButton from './LogoutButton';
 import ProductButton from './ProductButton';
 import CartButton from './CartButton';
 import AdminButton from './AdminButton';
+import LoginButton from './LoginButton';
 
 class HeaderComponent extends Component {
     constructor(props) {
@@ -23,8 +24,11 @@ class HeaderComponent extends Component {
                             <AdminButton />
                             <ProductButton  />
                             <CartButton />
-                            <LogoutButton onLogout={this.props.onLogout} />
                         </div>
+                        <div>
+                                <LoginButton />
+                                <LogoutButton onLogout={this.props.onLogout} />
+                            </div>
                     </nav>
                 </header>
             </div>
