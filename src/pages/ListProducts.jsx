@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import ProductService from '../services/ProductService';
 import CartService from '../services/CartService';
 import JwtService from '../services/JwtService';
-import product_card from "../data/product-data";
 import '../css/ListProduct.css';
-import ProductCard from './ProductCard';
-import Popup from "./Popup";
+import ProductCard from '../components/ProductCard';
+import Popup from "../components/Popup";
 
 
 class ListProducts extends Component {

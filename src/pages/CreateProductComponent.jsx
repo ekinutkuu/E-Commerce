@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import productService from '../services/ProductService';
-import Popup from "./Popup";
+import Popup from "../components/Popup";
 
 class CreateProductComponent extends Component {
 

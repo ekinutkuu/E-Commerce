@@ -39,6 +39,11 @@ class CartPage extends Component {
         return (
             <div className="cart-wrapper">
                 <div className="main_content">
+                    
+                    <br />
+                    <h1>Your Cart</h1>
+                    <br />
+
                     <table className="cart-table">
                         <thead>
                             <tr>

@@ -2,23 +2,23 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import ListUserComponent from './components/ListUserComponent';
+import ListUserComponent from './pages/ListUserComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
-import CreateuserComponent from './components/CreateUserComponent';
-import UpdateuserComponent from './components/UpdateUserComponent';
-import ViewuserComponent from './components/ViewUserComponent';
-import CreateProductComponent from './components/CreateProductComponent';
-import LoginComponent from './components/LoginComponent';
-import RegisterComponent from './components/RegisterComponent';
-import ListProducts from './components/ListProducts';
-import CartPage from './components/CartPage';
-import ProductPage from './components/ProductPage';
-import AdminPage from './components/AdminPage';
-import ProductsAdmin from './components/ProductsAdmin';
-import ViewProductAdminComponent from './components/ViewProductAdminComponent';
-import CategoriesAdmin from './components/CategoriesAdmin';
-import CreateCategories from './components/CreateCategories';
+import CreateuserComponent from './pages/CreateUserComponent';
+import UpdateuserComponent from './pages/UpdateUserComponent';
+import ViewuserComponent from './pages/ViewUserComponent';
+import CreateProductComponent from './pages/CreateProductComponent';
+import LoginComponent from './pages/LoginComponent';
+import RegisterComponent from './pages/RegisterComponent';
+import ListProducts from './pages/ListProducts';
+import CartPage from './pages/CartPage';
+import ProductPage from './pages/ProductPage';
+import AdminPage from './pages/AdminPage';
+import ProductsAdmin from './pages/ProductsAdmin';
+import ViewProductAdminComponent from './pages/ViewProductAdminComponent';
+import CategoriesAdmin from './pages/CategoriesAdmin';
+import CreateCategories from './pages/CreateCategories';
 
 
 function App() {

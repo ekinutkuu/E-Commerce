@@ -5,7 +5,7 @@ import JwtService from "../services/JwtService";
 import { withRouter } from "react-router-dom";
 import "../css/ProductPage.css";
 import productImage from '../img/question_mark.png';
-import Popup from "./Popup";
+import Popup from "../components/Popup";
 
 class ProductPage extends Component {
     constructor(props) {

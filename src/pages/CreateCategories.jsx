@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Popup from "./Popup";
+import Popup from "../components/Popup";
 import CategoryService from "../services/CategoryService";
 
 class CreateCategories extends Component {
