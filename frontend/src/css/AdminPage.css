@@ -1,0 +1,32 @@
+.wrapper-adminpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 56px);
+}
+
+.admin-panel-button {
+    margin: 0 20px;
+    padding: 20px;
+    width: 210px;
+    font-size: 18px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 7px #343a40;
+    transition: 0.1s ease;
+}
+
+.admin-panel-button:hover{
+    background-color: #444b52;
+    transform: scale(1.05);
+}
+
+.adminpanel-info-texts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    flex-direction: column;
+}
